@@ -1,7 +1,7 @@
 # Factory Accountant Agent
 
 An agent that receives the JSON output of a computer-vision factory product
-counter (`akhal_position_base/main.py`), acts as an accountant (prices are
+counter (`Vision/akhal_position_base/main.py`), acts as an accountant (prices are
 pre-configured), performs inventory auditing, converts entries/exits into
 purchases/sales, and sends hourly + end-of-day reports to the factory manager.
 
@@ -78,7 +78,7 @@ tracked as an operational metric.
 
 ```bash
 git clone https://github.com/masoudshahrian/Agentic-App.git
-cd <your-repo>/factory_accountant
+cd AI_Agent_Vision_Accountant/factory_accountant
 ```
 
 (Adjust the path if you put this project inside a different folder structure
