@@ -1,0 +1,69 @@
+{
+  "currency": "$",
+  "products": {
+    "akhal": {
+      "display_name": "آخال",
+      "display_name_en": "Akhal",
+      "unit": "Bale",
+      "purchase_unit_price": 120,
+      "sale_unit_price": 0,
+      "is_valued": true
+    },
+    "sulfate": {
+      "display_name": "سولفات",
+      "display_name_en": "Sulfate",
+      "unit": "guni",
+      "purchase_unit_price": 10,
+      "sale_unit_price": 0,
+      "is_valued": true
+    },
+    "pack": {
+      "display_name": "پک",
+      "display_name_en": "Pack",
+      "unit": "guni",
+      "purchase_unit_price": 15,
+      "sale_unit_price": 0,
+      "is_valued": true
+    },
+    "fructose": {
+      "display_name": "فروکتوز",
+      "display_name_en": "Fructose",
+      "unit": "guni",
+      "purchase_unit_price": 6,
+      "sale_unit_price": 0,
+      "is_valued": true
+    },
+    "paper-roll": {
+      "display_name": "رول کاغذ",
+      "display_name_en": "Paper-roll",
+      "unit": "Roll",
+      "purchase_unit_price": 0,
+      "sale_unit_price": 600,
+      "is_valued": true
+    },
+    "sude": {
+      "display_name": "سود",
+      "display_name_en": "Sude",
+      "unit": "Barrel",
+      "purchase_unit_price": 800,
+      "sale_unit_price": 0,
+      "is_valued": true
+    },
+    "akd": {
+      "display_name": "آ.کا.دی",
+      "display_name_en": "AKD",
+      "unit": "Barrel",
+      "purchase_unit_price": 750,
+      "sale_unit_price": 0,
+      "is_valued": true
+    },
+    "forklift": {
+      "display_name": "لیفتراک",
+      "display_name_en": "Forklift",
+      "unit": "vehicle",
+      "purchase_unit_price": 0,
+      "sale_unit_price": 0,
+      "is_valued": false
+    }
+  }
+}

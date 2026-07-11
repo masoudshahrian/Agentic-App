@@ -1,0 +1,7 @@
+numpy
+opencv-python
+requests
+ultralytics
+torch
+# Optional: required for NCNN model wrapper files
+ncnn

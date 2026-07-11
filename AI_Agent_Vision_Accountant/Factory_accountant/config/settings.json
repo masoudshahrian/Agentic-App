@@ -1,0 +1,41 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": 6008,
+    "ingest_path": "/receive_data/"
+  },
+  "timezone": "Asia/Tehran",
+  "vision_app": {
+    "comment": "Path to the vision counter's OWN python.exe (its own venv, with opencv/torch etc.) and its main.py",
+    "python_executable": "C:\\Users\\User\\Desktop\\AI-agent\\AISM\\VISION\\Smart_Warehouse_Vision_V6\\akhal_position_base\\venv\\Scripts\\python.exe",
+    "script_path": "C:\\Users\\User\\Desktop\\AI-agent\\AISM\\VISION\\Smart_Warehouse_Vision_V6\\akhal_position_base\\main.py",
+    "working_directory": "C:\\Users\\User\\Desktop\\AI-agent\\AISM\\VISION\\Smart_Warehouse_Vision_V6\\akhal_position_base"
+  },
+  "console_report_language": "en",
+  "business_rules": {
+    "comment": "This section defines what kind of transaction an object entering/exiting the detection line represents. If your factory's real-world logic is reversed (e.g. entry = a manufactured product entering the warehouse, not a purchase from outside), change it here.",
+    "entry_means": "purchase",
+    "exit_means": "sale",
+    "internal_means": "no_value_movement"
+  },
+  "hourly_report": {
+    "enabled": true,
+    "run_at_minute": 0
+  },
+  "daily_report": {
+    "enabled": true,
+    "run_at_hour": 23,
+    "run_at_minute": 59
+  },
+  "notifier": {
+    "channel": "console",
+    "comment": "channel can be: console | telegram | webhook. Fill in the values below to use Telegram.",
+    "telegram": {
+      "bot_token": "",
+      "chat_id": ""
+    },
+    "webhook": {
+      "url": ""
+    }
+  }
+}

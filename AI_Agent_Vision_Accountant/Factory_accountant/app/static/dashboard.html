@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Factory Accounting Dashboard</title>
+<style>
+  :root {
+    --bg: #0f1420;
+    --panel: #171d2b;
+    --panel-2: #1d2434;
+    --border: #2a3245;
+    --text: #e8ecf3;
+    --muted: #8a93a6;
+    --green: #34d399;
+    --red: #f87171;
+    --blue: #60a5fa;
+    --amber: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+  }
+  h1 { font-size: 22px; margin: 0 0 4px 0; }
+  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+
+  .top-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .control-card { flex: 1; min-width: 260px; display: flex; align-items: center; gap: 16px; }
+  .status-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+  .status-dot.running { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .status-text { font-size: 14px; }
+  .status-text b { font-size: 15px; }
+  .pid { color: var(--muted); font-size: 12px; }
+
+  button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  button:hover { opacity: 0.85; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-start { background: var(--green); color: #06281c; }
+  .btn-stop { background: var(--red); color: #350909; }
+
+  .summary-card { flex: 2; min-width: 340px; display: flex; gap: 28px; align-items: center; }
+  .summary-item .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .summary-item .value { font-size: 20px; font-weight: 700; margin-top: 2px; }
+  .value.purchase { color: var(--blue); }
+  .value.sale { color: var(--green); }
+  .value.profit-pos { color: var(--green); }
+  .value.profit-neg { color: var(--red); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  .panel-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .empty-row td { color: var(--muted); text-align: center; padding: 16px; }
+
+  .badge-purchase { color: var(--blue); }
+  .badge-sale { color: var(--green); }
+  .anomaly-flag { color: var(--amber); font-weight: 700; }
+
+  .inventory-panel { margin-top: 16px; }
+
+  .msg { font-size: 12px; margin-top: 8px; color: var(--muted); }
+  .msg.error { color: var(--red); }
+</style>
+</head>
+<body>
+
+  <h1>Factory Accounting Dashboard</h1>
+  <div class="subtitle">Live purchase/sale accounting from the vision counter</div>
+
+  <div class="top-row">
+    <div class="card control-card">
+      <div class="status-dot" id="statusDot"></div>
+      <div style="flex:1">
+        <div class="status-text"><b id="statusText">Stopped</b> <span class="pid" id="pidText"></span></div>
+        <div class="msg" id="controlMsg"></div>
+      </div>
+      <button class="btn-start" id="startBtn" onclick="startVision()">Start Vision</button>
+      <button class="btn-stop" id="stopBtn" onclick="stopVision()">Stop Vision</button>
+    </div>
+
+    <div class="card summary-card">
+      <div class="summary-item">
+        <div class="label">Purchases Today</div>
+        <div class="value purchase" id="totalPurchase">0</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">Sales Today</div>
+        <div class="value sale" id="totalSale">0</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">Profit / Loss</div>
+        <div class="value" id="totalProfit">0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="panel-title">Purchases (Entries)</div>
+      <table>
+        <thead><tr><th>Time</th><th>Product</th><th>Qty</th><th>Value</th></tr></thead>
+        <tbody id="purchaseTable"><tr class="empty-row"><td colspan="4">No data yet</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="panel-title">Sales (Exits)</div>
+      <table>
+        <thead><tr><th>Time</th><th>Product</th><th>Qty</th><th>Value</th></tr></thead>
+        <tbody id="saleTable"><tr class="empty-row"><td colspan="4">No data yet</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card inventory-panel">
+    <div class="panel-title">Current Inventory</div>
+    <table>
+      <thead><tr><th>Product</th><th>Quantity</th></tr></thead>
+      <tbody id="inventoryTable"><tr class="empty-row"><td colspan="2">No data yet</td></tr></tbody>
+    </table>
+  </div>
+
+<script>
+const currency = "IRR";
+
+function fmtNum(n) {
+  return Number(n).toLocaleString("en-US");
+}
+
+async function refreshStatus() {
+  try {
+    const res = await fetch("/vision/status");
+    const data = await res.json();
+    const dot = document.getElementById("statusDot");
+    const text = document.getElementById("statusText");
+    const pid = document.getElementById("pidText");
+    const startBtn = document.getElementById("startBtn");
+    const stopBtn = document.getElementById("stopBtn");
+
+    if (data.running) {
+      dot.classList.add("running");
+      text.textContent = "Running";
+      pid.textContent = "(PID " + data.pid + ", uptime " + data.uptime_seconds + "s)";
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
+    } else {
+      dot.classList.remove("running");
+      text.textContent = "Stopped";
+      pid.textContent = "";
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
+    }
+  } catch (e) { /* ignore */ }
+}
+
+async function startVision() {
+  const msg = document.getElementById("controlMsg");
+  msg.textContent = "Starting...";
+  msg.className = "msg";
+  try {
+    const res = await fetch("/vision/start", { method: "POST" });
+    const data = await res.json();
+    msg.textContent = data.message;
+    msg.className = data.ok ? "msg" : "msg error";
+  } catch (e) {
+    msg.textContent = "Request failed: " + e;
+    msg.className = "msg error";
+  }
+  refreshStatus();
+}
+
+async function stopVision() {
+  const msg = document.getElementById("controlMsg");
+  try {
+    const res = await fetch("/vision/stop", { method: "POST" });
+    const data = await res.json();
+    msg.textContent = data.message;
+    msg.className = data.ok ? "msg" : "msg error";
+  } catch (e) {
+    msg.textContent = "Request failed: " + e;
+    msg.className = "msg error";
+  }
+  refreshStatus();
+}
+
+function renderRows(tbodyId, rows, colCount) {
+  const tbody = document.getElementById(tbodyId);
+  if (!rows || rows.length === 0) {
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="' + colCount + '">No data yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.map(r => {
+    if (r.quantity !== undefined) {
+      return `<tr><td>${r.product}</td><td>${fmtNum(r.quantity)}</td></tr>`;
+    }
+    const flag = r.is_anomaly ? ' <span class="anomaly-flag">⚠</span>' : '';
+    return `<tr><td>${r.time}</td><td>${r.product}${flag}</td><td>${fmtNum(r.qty)}</td><td>${fmtNum(r.value)} ${currency}</td></tr>`;
+  }).join("");
+}
+
+async function refreshSummary() {
+  try {
+    const res = await fetch("/live/summary");
+    const data = await res.json();
+
+    document.getElementById("totalPurchase").textContent = fmtNum(data.totals.purchase_value) + " " + data.totals.currency;
+    document.getElementById("totalSale").textContent = fmtNum(data.totals.sale_value) + " " + data.totals.currency;
+    const profitEl = document.getElementById("totalProfit");
+    profitEl.textContent = fmtNum(data.totals.profit) + " " + data.totals.currency;
+    profitEl.className = "value " + (data.totals.profit >= 0 ? "profit-pos" : "profit-neg");
+
+    renderRows("purchaseTable", data.purchases, 4);
+    renderRows("saleTable", data.sales, 4);
+    renderRows("inventoryTable", data.inventory, 2);
+  } catch (e) { /* ignore */ }
+}
+
+function tick() {
+  refreshStatus();
+  refreshSummary();
+}
+
+tick();
+setInterval(tick, 4000);
+</script>
+</body>
+</html>
