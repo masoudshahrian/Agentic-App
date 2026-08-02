@@ -36,7 +36,7 @@
 ۱. **دانلود و استخراج فایل‌ها:**
    فایل‌های پروژه را از گیت‌هاب دانلود کرده یا پروژه را کلون کنید:
    ```bash
-   git clone https://github.com/yourusername/cv-checker-ai.git
+   git clone https://github.com/masoudshahrian/agentic-app/ai-cv-checker.git
    cd cv-checker-ai
    ```
 
