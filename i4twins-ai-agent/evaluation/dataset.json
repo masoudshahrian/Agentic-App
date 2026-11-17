@@ -1,0 +1,169 @@
+[
+ {
+  "id": 1,
+  "category": "single",
+  "prompt": "Summarize this article: The city council met on Tuesday and approved a 4.1 million dollar budget for road repairs. Residents had complained for months about potholes on the main roads. Work will start in March and finish before winter, and the mayor said progress reports will be published every month.",
+  "expected_skills": [
+   "summarizer"
+  ],
+  "expected_language": "en",
+  "clarification_required": false,
+  "explanation": "Clear summarization request with the text provided."
+ },
+ {
+  "id": 2,
+  "category": "single",
+  "prompt": "Translate this paragraph into Persian: The weather is lovely today, so we are going to the park.",
+  "expected_skills": [
+   "translator"
+  ],
+  "expected_language": "en",
+  "clarification_required": false,
+  "explanation": "Clear translation request with an explicit target language."
+ },
+ {
+  "id": 3,
+  "category": "single",
+  "prompt": "What is 245 * 36?",
+  "expected_skills": [
+   "calculator"
+  ],
+  "expected_language": "en",
+  "clarification_required": false,
+  "explanation": "Plain arithmetic."
+ },
+ {
+  "id": 4,
+  "category": "unsupported",
+  "prompt": "Book me a flight to Tehran for tomorrow morning.",
+  "expected_skills": [],
+  "expected_language": "en",
+  "clarification_required": false,
+  "expected_unsupported": true,
+  "explanation": "Needs an action (booking) that no skill provides and general chat cannot perform: must return an unsupported-request answer."
+ },
+ {
+  "id": 5,
+  "category": "single",
+  "prompt": "این متن را خلاصه کن: شهرداری روز سه‌شنبه بودجه‌ای ۴ میلیون دلاری برای تعمیر جاده‌ها تصویب کرد. ساکنان ماه‌ها از وجود چاله در خیابان‌های اصلی شکایت داشتند. کار از اسفند آغاز می‌شود و پیش از زمستان به پایان می‌رسد.",
+  "expected_skills": [
+   "summarizer"
+  ],
+  "expected_language": "fa",
+  "clarification_required": false,
+  "explanation": "Persian summarization request."
+ },
+ {
+  "id": 6,
+  "category": "single",
+  "prompt": "این جمله را به انگلیسی ترجمه کن: امروز هوا خیلی خوب است و ما به پارک می‌رویم.",
+  "expected_skills": [
+   "translator"
+  ],
+  "expected_language": "fa",
+  "clarification_required": false,
+  "explanation": "Persian translation request with explicit target."
+ },
+ {
+  "id": 7,
+  "category": "single",
+  "prompt": "حاصل ۲۵ ضربدر ۴۸ چیست؟",
+  "expected_skills": [
+   "calculator"
+  ],
+  "expected_language": "fa",
+  "clarification_required": false,
+  "explanation": "Persian arithmetic with Persian digits and the word ضربدر."
+ },
+ {
+  "id": 8,
+  "category": "single",
+  "prompt": "سلام، حالت چطور است؟",
+  "expected_skills": [
+   "general_chat"
+  ],
+  "expected_language": "fa",
+  "clarification_required": false,
+  "explanation": "Persian greeting."
+ },
+ {
+  "id": 9,
+  "category": "multi_sequential",
+  "prompt": "Summarize this text and translate the summary into Persian: Electric cars have become more popular because batteries are cheaper and charging networks have grown. Sales doubled in two years, although critics point out that mining the metals for batteries has environmental costs.",
+  "expected_skills": [
+   "summarizer",
+   "translator"
+  ],
+  "expected_language": "en",
+  "clarification_required": false,
+  "explanation": "Two dependent skills: translation consumes the summary."
+ },
+ {
+  "id": 10,
+  "category": "multi_sequential",
+  "prompt": "این متن را خلاصه کن و سپس به انگلیسی ترجمه کن: خودروهای برقی محبوب‌تر شده‌اند، زیرا باتری‌ها ارزان‌تر شده و شبکه شارژ گسترش یافته است. فروش آن‌ها در دو سال دو برابر شد.",
+  "expected_skills": [
+   "summarizer",
+   "translator"
+  ],
+  "expected_language": "fa",
+  "clarification_required": false,
+  "explanation": "Persian two-skill sequential request."
+ },
+ {
+  "id": 11,
+  "category": "multi_parallel",
+  "prompt": "Translate 'Good morning, my friend' into French and also calculate 25 * 48.",
+  "expected_skills": [
+   "translator",
+   "calculator"
+  ],
+  "expected_language": "en",
+  "clarification_required": false,
+  "explanation": "Two independent skills that can run in parallel."
+ },
+ {
+  "id": 12,
+  "category": "ambiguous",
+  "prompt": "Translate this.",
+  "expected_skills": [
+   "translator"
+  ],
+  "expected_language": "en",
+  "clarification_required": true,
+  "explanation": "Translation requested but there is no text; the agent must ask."
+ },
+ {
+  "id": 13,
+  "category": "ambiguous",
+  "prompt": "ترجمه کن",
+  "expected_skills": [
+   "translator"
+  ],
+  "expected_language": "fa",
+  "clarification_required": true,
+  "explanation": "Persian translation request with no text or target."
+ },
+ {
+  "id": 14,
+  "category": "edge",
+  "prompt": "Summarize: Revenue grew from 2.5 million in 2022 to 4.1 million in 2024 while costs fell by 8% over the same period.",
+  "expected_skills": [
+   "summarizer"
+  ],
+  "expected_language": "en",
+  "clarification_required": false,
+  "explanation": "Numbers inside the text must not trigger the calculator."
+ },
+ {
+  "id": 15,
+  "category": "edge",
+  "prompt": "What is a prime number?",
+  "expected_skills": [
+   "general_chat"
+  ],
+  "expected_language": "en",
+  "clarification_required": false,
+  "explanation": "A math concept question is general chat, not a calculation."
+ }
+]

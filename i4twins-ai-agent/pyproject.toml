@@ -1,0 +1,10 @@
+[project]
+name = "i4twins-ai-agent"
+version = "0.1.0"
+description = "Multi-skill LangGraph agent (summarizer, translator, calculator, general chat) with Persian support"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]

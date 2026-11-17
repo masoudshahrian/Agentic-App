@@ -1,0 +1,299 @@
+{
+  "mode": "live",
+  "run_at": "2026-11-16T20:38:14+00:00",
+  "metrics": {
+    "n": 15,
+    "exact_skill_set_accuracy": 1.0,
+    "per_skill": {
+      "summarizer": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 5
+      },
+      "translator": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 7
+      },
+      "calculator": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 3
+      },
+      "general_chat": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 2
+      }
+    },
+    "multi_skill_detection_accuracy": 1.0,
+    "multi_skill_n": 3,
+    "clarification_accuracy": 1.0,
+    "unsupported_accuracy": 1.0,
+    "persian_routing_accuracy": 1.0,
+    "persian_n": 6
+  },
+  "details": [
+    {
+      "id": 1,
+      "prompt": "Summarize this article: The city council met on Tuesday and approved a 4.1 milli",
+      "expected": [
+        "summarizer"
+      ],
+      "predicted": [
+        "summarizer"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 2,
+      "prompt": "Translate this paragraph into Persian: The weather is lovely today, so we are go",
+      "expected": [
+        "translator"
+      ],
+      "predicted": [
+        "translator"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 3,
+      "prompt": "What is 245 * 36?",
+      "expected": [
+        "calculator"
+      ],
+      "predicted": [
+        "calculator"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 4,
+      "prompt": "Book me a flight to Tehran for tomorrow morning.",
+      "expected": [],
+      "predicted": [],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": true,
+      "predicted_unsupported": true,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 5,
+      "prompt": "این متن را خلاصه کن: شهرداری روز سه‌شنبه بودجه‌ای ۴ میلیون دلاری برای تعمیر جاده",
+      "expected": [
+        "summarizer"
+      ],
+      "predicted": [
+        "summarizer"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 6,
+      "prompt": "این جمله را به انگلیسی ترجمه کن: امروز هوا خیلی خوب است و ما به پارک می‌رویم.",
+      "expected": [
+        "translator"
+      ],
+      "predicted": [
+        "translator"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 7,
+      "prompt": "حاصل ۲۵ ضربدر ۴۸ چیست؟",
+      "expected": [
+        "calculator"
+      ],
+      "predicted": [
+        "calculator"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 8,
+      "prompt": "سلام، حالت چطور است؟",
+      "expected": [
+        "general_chat"
+      ],
+      "predicted": [
+        "general_chat"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 9,
+      "prompt": "Summarize this text and translate the summary into Persian: Electric cars have b",
+      "expected": [
+        "summarizer",
+        "translator"
+      ],
+      "predicted": [
+        "summarizer",
+        "translator"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 10,
+      "prompt": "این متن را خلاصه کن و سپس به انگلیسی ترجمه کن: خودروهای برقی محبوب‌تر شده‌اند، ز",
+      "expected": [
+        "summarizer",
+        "translator"
+      ],
+      "predicted": [
+        "summarizer",
+        "translator"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 11,
+      "prompt": "Translate 'Good morning, my friend' into French and also calculate 25 * 48.",
+      "expected": [
+        "translator",
+        "calculator"
+      ],
+      "predicted": [
+        "translator",
+        "calculator"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 12,
+      "prompt": "Translate this.",
+      "expected": [
+        "translator"
+      ],
+      "predicted": [
+        "translator"
+      ],
+      "expected_clarification": true,
+      "predicted_clarification": true,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 13,
+      "prompt": "ترجمه کن",
+      "expected": [
+        "translator"
+      ],
+      "predicted": [
+        "translator"
+      ],
+      "expected_clarification": true,
+      "predicted_clarification": true,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 14,
+      "prompt": "Summarize: Revenue grew from 2.5 million in 2022 to 4.1 million in 2024 while co",
+      "expected": [
+        "summarizer"
+      ],
+      "predicted": [
+        "summarizer"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    },
+    {
+      "id": 15,
+      "prompt": "What is a prime number?",
+      "expected": [
+        "general_chat"
+      ],
+      "predicted": [
+        "general_chat"
+      ],
+      "expected_clarification": false,
+      "predicted_clarification": false,
+      "expected_unsupported": false,
+      "predicted_unsupported": false,
+      "source": "llm",
+      "match": true,
+      "errors": []
+    }
+  ]
+}

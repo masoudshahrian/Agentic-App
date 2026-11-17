@@ -1,0 +1,66 @@
+[
+  {
+    "registered_skills": 11,
+    "queries": 20,
+    "avg_candidates": 6.0,
+    "avg_selected": 1.0,
+    "max_prompts_loaded_before_execution": 0,
+    "avg_prompts_loaded_after_execution": 1.0,
+    "any_unselected_prompt_accessed": false,
+    "avg_routing_context_chars": 3854.6,
+    "naive_all_prompts_chars": 42531,
+    "target_in_shortlist_rate": 1.0,
+    "target_selected_rate": 1.0,
+    "strategies": [
+      "lexical"
+    ]
+  },
+  {
+    "registered_skills": 51,
+    "queries": 20,
+    "avg_candidates": 6.0,
+    "avg_selected": 1.0,
+    "max_prompts_loaded_before_execution": 0,
+    "avg_prompts_loaded_after_execution": 1.0,
+    "any_unselected_prompt_accessed": false,
+    "avg_routing_context_chars": 3878.55,
+    "naive_all_prompts_chars": 188682,
+    "target_in_shortlist_rate": 1.0,
+    "target_selected_rate": 1.0,
+    "strategies": [
+      "lexical"
+    ]
+  },
+  {
+    "registered_skills": 101,
+    "queries": 20,
+    "avg_candidates": 6.0,
+    "avg_selected": 1.0,
+    "max_prompts_loaded_before_execution": 0,
+    "avg_prompts_loaded_after_execution": 1.0,
+    "any_unselected_prompt_accessed": false,
+    "avg_routing_context_chars": 3875.75,
+    "naive_all_prompts_chars": 371285,
+    "target_in_shortlist_rate": 1.0,
+    "target_selected_rate": 1.0,
+    "strategies": [
+      "lexical"
+    ]
+  },
+  {
+    "registered_skills": 201,
+    "queries": 20,
+    "avg_candidates": 6.0,
+    "avg_selected": 1.0,
+    "max_prompts_loaded_before_execution": 0,
+    "avg_prompts_loaded_after_execution": 1.0,
+    "any_unselected_prompt_accessed": false,
+    "avg_routing_context_chars": 3876.55,
+    "naive_all_prompts_chars": 736491,
+    "target_in_shortlist_rate": 1.0,
+    "target_selected_rate": 1.0,
+    "strategies": [
+      "lexical"
+    ]
+  }
+]

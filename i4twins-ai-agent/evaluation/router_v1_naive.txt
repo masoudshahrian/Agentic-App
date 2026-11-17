@@ -1,0 +1,4 @@
+ROLE: router
+Pick the skills needed for the user's message from this list:
+<<CANDIDATES>>
+Reply with JSON: {"selected_skills": [...], "depends_on_previous": false, "detected_language": "en", "confidence": 0.9, "clarification_required": false, "clarification_question": null, "unsupported_request": false, "unsupported_reason": null, "reasoning_summary": ""}
